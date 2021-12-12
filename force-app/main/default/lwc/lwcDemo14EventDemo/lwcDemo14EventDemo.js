@@ -27,6 +27,6 @@ export default class LwcDemo14EventDemo extends LightningElement {
         const selectedContactId = event.detail;
         console.log('@@@@'+JSON.stringify(selectedContactId));
         this.selectedContact = this.contacts.find(contact => contact.Id == selectedContactId);
-        console.log('@@@@@'+JSON.stringify(this.selectedContact));
+        console.log('@@@@@@'+JSON.stringify(this.selectedContact));
     }
 }
