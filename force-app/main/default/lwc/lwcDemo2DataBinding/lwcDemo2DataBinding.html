@@ -1,0 +1,21 @@
+<template>
+    <lightning-card title = "Demo2">
+        <p>HELLO, {greeting}</p>
+        <lightning-input name="input1" 
+            label="Enter Text"
+            value={greeting}
+            onchange={handleChange}>
+        </lightning-input>
+     <br/> <br/>
+     <lightning-input name = "firstname" 
+        label="First Name"
+        onchange={handleNameChange}>
+    </lightning-input>
+    <lightning-input name = "lastname" 
+        label="Last Name"
+        onchange={handleNameChange}>
+    </lightning-input>
+        <br/>
+        Name is : {fullName.fname} {fullName.lname}
+    </lightning-card>
+</template>

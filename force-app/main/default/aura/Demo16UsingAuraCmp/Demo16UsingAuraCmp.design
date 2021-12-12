@@ -1,0 +1,3 @@
+<design:component>
+    <design:attribute name="format" label="Date Format" datasource="apex://MyCustomPickList"/>
+</design:component>

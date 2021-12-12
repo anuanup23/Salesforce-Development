@@ -1,0 +1,9 @@
+<template>
+    <lightning-card title = "Demo 6 Public Property">
+        <template for:each={contacts} for:item="con">
+            <div key={con.Id}>
+                <c-lwc-demo6-contact-details contactdetails={con}></c-lwc-demo6-contact-details>
+            </div>
+        </template>
+    </lightning-card>
+</template>

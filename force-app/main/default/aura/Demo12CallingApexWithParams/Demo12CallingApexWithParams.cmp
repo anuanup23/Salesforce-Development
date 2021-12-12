@@ -1,0 +1,25 @@
+<aura:component controller="Demo11CallingApexController">
+    <aura:attribute name="accountList" type="List"/>
+  	<aura:attribute name="selectedAccountId" type="String" default = ""/>
+    <aura:attribute name = "contactList" type = "List"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler name = "change" value = "{!v.selectedAccountId}" action = "{!c.fetchContacts}"/>
+    <lightning:select name="select1" label="Select Account" required="true" value = "{!v.selectedAccountId}">
+        <option value="">choose one...</option>
+        <aura:iteration items="{!v.accountList}" var="acc">
+            <option value="{!acc.Id}">{!acc.Name}</option>
+        </aura:iteration>
+    </lightning:select>
+    <br/> <br/> <br/><br/>
+    {!v.selectedAccountId} <br/> <br/> <br/><br/>
+    <div>
+        <aura:if isTrue = "{!v.contactList.length > 0}">
+            <aura:iteration items = "{!v.contactList}" var = "con">
+                Id is : {!con.Id} and Name is : {!con.Name} <br/>
+            </aura:iteration>
+            <aura:set attribute = "else">
+                No Contact Exist
+            </aura:set>
+        </aura:if>
+    </div>
+</aura:component>

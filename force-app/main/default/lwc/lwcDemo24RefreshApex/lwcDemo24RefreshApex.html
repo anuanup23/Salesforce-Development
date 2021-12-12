@@ -1,0 +1,10 @@
+<template>
+    <lightning-card title="Demo 24 Refresh Apex" icon-name="custom:custom19">
+    <template if:true={allAccounts.data}>
+        <template for:each={allAccounts.data} for:item="acc">
+            <p key={acc.Id}>{acc.Name}---{acc.Active__c}</p>
+        </template>
+    </template>
+    <lightning-button variant="brand" label="Update Account" title="Primary action" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
+    </lightning-card>
+ </template>

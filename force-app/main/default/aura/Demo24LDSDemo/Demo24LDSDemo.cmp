@@ -1,0 +1,48 @@
+<aura:component implements="force:lightningQuickAction,flexipage:availableForAllPageTypes,force:hasRecordId,force:hasSObjectName">
+    <aura:attribute name = "sObjectName" type = "String" />
+    <aura:attribute name = "recordId" type = "String" />
+    <aura:attribute name = "simpleAccount" type = "String" />
+    <aura:attribute name = "accountError" type = "String" />
+    <force:recordData aura:id="recordLoader"
+    recordId="{!v.recordId}"
+    fields="Name,Description,Phone,Industry"
+    targetFields="{!v.simpleAccount}"
+    targetError="{!v.accountError}"/>
+    <aura:attribute name = "newContact" type = "Object"/>
+    <aura:attribute name = "simpleNewContact" type = "Object"/>
+    <aura:attribute name = "newContactError" type = "Object"/>
+    <force:recordData aura:id="contactRecord"
+    layoutType = "FULL"
+    targetRecord="{!v.newContact}"
+    targetFields="{!v.simpleNewContact}"
+    targetError="{!v.newContactError}"/>
+    <aura:handler name = "init" value = "{!this}" action = "{!c.doInit}"/>
+    <div class = "slds-page-header">
+        <div class = "slds-page-header__row">
+            <div class = "slds-page-header__col_title">
+                <div class = "slds-media">
+                    <div class = "slds-media__figure">
+                        <span class = "slds-icon_container slds-icon-standard-opportunity" title = "opportunity">
+                            <span class = "slds-assistive-text"> opportunity </span>
+                        </span>
+                    </div>
+                    <div class = "slds-media__body">
+                        <div class="slds-page-header__name">
+                            <div class="slds-page-header__name-title">
+                                <h1>
+                                    <span class = "slds-page-header__title slds-truncate" title="{!v.simpleAccount.Name}">Account : {!v.simpleAccount.Name}</span>
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <lightning:input type = "String" name = "firstname" label = "First Name" required = "true" value = "{!v.simpleNewContact.FirstName}"/>
+    <lightning:input type = "String" name = "lastname" label = "Last Name" required = "true" value = "{!v.simpleNewContact.LastName}"/>
+    <lightning:input type = "String" name = "email" label = "Email" required = "true" value = "{!v.simpleNewContact.Email}"/>
+    <lightning:input type = "String" name = "title" label = "Title"  value = "{!v.simpleNewContact.Title}"/><br/>
+    <lightning:button variant = "brand" label = "Save" title="Brand action" onclick = "{!c.handleSave}"/>
+    <lightning:button variant = "brand" label = "Cancel" title="Brand action" onclick = "{!c.handleCancel}"/>
+</aura:component>

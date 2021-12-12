@@ -1,0 +1,10 @@
+<template>
+    <template for:each={contacts} for:item="con">
+        <div key={con.Id} data-item={con.Id} onclick={selectHandler}>
+            <lightning-tile label={con.Name}>
+                <p class = "slds-truncate">{con.Title}</p>
+                <p class = "slds-truncate">{con.Id}</p>
+            </lightning-tile>
+        </div>
+    </template>
+</template>

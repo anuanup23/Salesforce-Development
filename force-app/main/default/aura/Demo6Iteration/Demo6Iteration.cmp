@@ -1,0 +1,11 @@
+<aura:component>
+    <aura:attribute name="colorList" type="List" default="['red','green','yellow','black']"/>
+	<aura:iteration items="1,2,3,4,5" var="item">
+        <meter value="{!item / 5}"/><br/>
+    </aura:iteration>
+    <ul>
+        <aura:iteration items="colorList" var="item">
+        <li>color is : {!item} </li>
+        </aura:iteration>
+    </ul>
+</aura:component>

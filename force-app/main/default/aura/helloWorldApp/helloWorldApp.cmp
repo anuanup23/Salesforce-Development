@@ -1,0 +1,9 @@
+<aura:component >
+	<c:Demo3Facets>
+		This is a Demo Demo3Facets, This is the Text
+	<aura:set attribute = "header">
+		Text to header
+	</aura:set>
+	This is a Demo Demo3Facets, This is the Text
+	</c:Demo3Facets>
+</aura:component>

@@ -1,0 +1,21 @@
+<template>
+    <lightning-card title = "Demo 4 for each">
+        <ul class = "slds-list_dotted">
+            <template for:each={contacts} for:item= "con">
+                <li key={con.Id}> {con.Name} ---- {con.Title}</li>
+            </template>
+        </ul>
+    </lightning-card>
+
+    <lightning-card title = "Demo 4 Iterator">
+        <ul class = "slds-list_dotted">
+            <template iterator:it={contacts}>
+                <li key={it.value.Id}> 
+                    <div if:true={it.first} class="list-first"></div>
+                    {it.value.Name} ---- {it.value.Title}
+                    <div if:true={it.last} class="list-last"></div>
+                </li>
+            </template>
+        </ul>
+    </lightning-card>
+</template>

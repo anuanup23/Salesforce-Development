@@ -1,0 +1,120 @@
+<aura:component controller = "Demo22WrapperDemoController">
+    <aura:attribute name = "recordId" type= "String"/>
+    <aura:attribute name = "view" type= "Object"/>
+    <aura:attribute name = "isEdit" type = "Boolean" default = "false" />
+    <aura:handler name = "init" value = "{!this}" action = "{!c.doInit}"/>
+    <lightning:card title = "Account Details">
+        <p class = "slds-p-horizontal_small">
+            Account Name : {!v.view.name}
+        </p>
+        <p class = "slds-p-horizontal_small">
+            Account Id : {!v.view.id}
+        </p>
+    </lightning:card>
+      <aura:if isTrue = "{!v.isEdit}">
+        <lightning:button variant = "brand" label = "save" onclick="{!c.saveRecords}"/>
+        <lightning:button variant = "brand" label = "Add New Contact" onclick="{!c.addNewContact}"/>
+        <aura:set attribute = "else">
+          <lightning:button variant = "brand" label = "Edit" onclick="{!c.editRecords}"/>
+        </aura:set>
+      </aura:if>
+      <lightning:card title = "Related Contact" >
+        <table class = "slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped" aria-label="Example table of Opportunities with striped rows">
+            <thead>
+                <tr class="slds-line-height_reset">
+                    <th class="" scope="col">
+                      <div class="slds-truncate" title="First Name">First Name</div>
+                    </th>
+                    <th class="" scope="col">
+                      <div class="slds-truncate" title="Last Name">Last Name</div>
+                    </th>
+                    <th class="" scope="col">
+                      <div class="slds-truncate" title="Phone">Phone</div>
+                    </th>
+                    <th class="" scope="col">
+                      <div class="slds-truncate" title="Email">Email</div>
+                    </th>
+                  </tr>
+            </thead>
+            <tbody>
+                <aura:iteration items= "{!v.view.wrapperContactList}" var = "con">
+                <tr class="slds-hint-parent">
+                  <th data-label="First Name" scope="row">
+                    <div class="slds-truncate" title="Cloudhub">
+                      <aura:if isTrue= "{!v.isEdit}">
+                        <lightning:input name = "input1" label = "" value = "{!con.FirstName}"/>
+                        <aura:set attribute = "else">
+                          {!con.FirstName}
+                        </aura:set>
+                    </aura:if>
+                    </div>
+                  </th>
+                  <td data-label="Last Name">
+                    <div class="slds-truncate" title="Cloudhub">
+                      <aura:if isTrue= "{!v.isEdit}">
+                        <lightning:input name = "input1" label = "" value = "{!con.LastName}"/>
+                        <aura:set attribute = "else">
+                          {!con.LastName}
+                        </aura:set>
+                    </aura:if></div>
+                  </td>
+                  <td data-label="Phone">
+                    <div class="slds-truncate" title="4/14/2015">
+                      <aura:if isTrue= "{!v.isEdit}">
+                        <lightning:input name = "input1" label = "" value = "{!con.Phone}"/>
+                        <aura:set attribute = "else">
+                          {!con.Phone}
+                        </aura:set>
+                    </aura:if></div>
+                  </td>
+                  <td data-label="Email">
+                    <div class="slds-truncate" title="Prospecting">
+                      <aura:if isTrue= "{!v.isEdit}">
+                        <lightning:input name = "input1" label = "" value = "{!con.Email}"/>
+                        <aura:set attribute = "else">
+                          {!con.Email}
+                        </aura:set>
+                    </aura:if></div>
+                  </td>
+                </tr>
+              </aura:iteration>
+              </tbody>
+        </table>
+    </lightning:card>
+    <lightning:card title = "Related Opportunities">
+        <table class = "slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped" aria-label="Example table of Opportunities with striped rows">
+            <thead>
+                <tr class="slds-line-height_reset">
+                    <th class="" scope="col">
+                      <div class="slds-truncate" title=" Name"> Name</div>
+                    </th>
+                    <th class="" scope="col">
+                      <div class="slds-truncate" title="Closed Date">Closed Date</div>
+                    </th>
+                    <th class="" scope="col">
+                      <div class="slds-truncate" title="Amount">Amount</div>
+                    </th>
+                  </tr>
+            </thead>
+            <tbody>
+                <aura:iteration items= "{!v.view.wrapperOpportunityList}" var = "opp">
+                <tr class="slds-hint-parent">
+                  <th data-label="Name" scope="row">
+                    <div class="slds-truncate" title="Cloudhub">
+                      {!opp.Name}
+                    </div>
+                  </th>
+                  <td data-label="Closed Date">
+                    <div class="slds-truncate" title="Cloudhub">{!opp.CloseDate}</div>
+                  </td>
+                  <td data-label="Amount">
+                    <div class="slds-truncate" title="4/14/2015">{!opp.Amount}</div>
+                  </td>
+                  
+                </tr>
+              </aura:iteration>
+              </tbody>
+        </table>
+    </lightning:card>
+
+</aura:component>
